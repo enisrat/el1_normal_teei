@@ -1,0 +1,3 @@
+[submodule "teei_driver_baremetal"]
+	path = teei_driver_baremetal
+	url = git@github.com:enisrat/teei_driver_baremetal.git

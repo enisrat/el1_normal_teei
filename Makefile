@@ -3,7 +3,7 @@ BUILDROOT := bin
 BUILDDIR := .
 VPATH = src
 
-SOURCES := main.c printf.c smc.c
+SOURCES := lk.c kernel.c std_baremetal.c printf.c smc.c
 OBJECTS  := $(SOURCES:%.c=%.o)
 BIN_NAME := el1.bin
 
@@ -33,16 +33,20 @@ clean:
 	find . -name "*.o" -type f -delete
 	find . -name "*.elf" -type f -delete
 	find . -name "*.bin" -type f -delete
+	$(MAKE) -C teei_driver_baremetal clean
 
 %.bin: %.elf
 	$(OBJCOPY) -O binary -j .text -j .data* $< $@
 
 .PRECIOUS: %.elf
-%.elf: $(BIN_NAME).ld $(OBJECTS) init.o
-	$(LD) $(LDFLAGS) -L . -T $^ -o $@
+%.elf: $(BIN_NAME).ld $(OBJECTS) init.o teei_driver_baremetal/drv.a
+	$(LD) $(LDFLAGS) -L . -T $^ teei_driver_baremetal/*.o -o $@
 
 $(OBJECTS): %.o :  %.c
 	$(CC) $(CFLAGS) $(USER_DEFINES)  -I. -c $^ -o $@
 
 init.o: init.S
 	$(CC) $(CFLAGS) $(USER_DEFINES) -c $< -o $@
+
+teei_driver_baremetal/drv.a:
+	$(MAKE) -C teei_driver_baremetal 

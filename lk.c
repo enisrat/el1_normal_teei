@@ -19,14 +19,3 @@ void lk_main(char *param) {
 
 	smc(MTK_SIP_KERNEL_BOOT, &entry_kernel, 0, 0, 0, 0, 0, 0);
 }
-
-void kernel_main() {
-	size_t ret;
-	printf("HELLO from Kernel!\r\n");
-
-	ret = smc(MTK_SIP_LK_RPMB_INIT, 0, 0, 0, 0, 0, 0, 0);
-	printf("SMC ret: %llx\r\n", ret);
-
-	while(1){
-	};
-}
