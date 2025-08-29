@@ -49,4 +49,4 @@ init.o: init.S
 	$(CC) $(CFLAGS) $(USER_DEFINES) -c $< -o $@
 
 teei_driver_baremetal/drv.a:
-	$(MAKE) -C teei_driver_baremetal 
+	$(MAKE) -C teei_driver_baremetal all 
