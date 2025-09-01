@@ -2,6 +2,8 @@
 
 ## Memmap 6768
 
+Only DRAM (and SRAM) addresses. Hardware MMIO not included.
+
 | Address      | Size       | Description              | used in EMU or ORIG  |
 |--------------|------------|--------------------------|----- | 
 | 0x00100000 | | SRAM | BOTH |
