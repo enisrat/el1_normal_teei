@@ -14,6 +14,7 @@ void kernel_main() {
 	soter_driver_init();
 	init_teei_framework();
 
+	//kmtest();
 	kmtest_optee();
 
 	while(1){
