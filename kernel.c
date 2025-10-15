@@ -1,7 +1,7 @@
 
 #include "common.h"
 #include "smc_id_bl.h"
-
+#include "config_area.h"
 
 void kernel_main() {
 	size_t ret;
@@ -15,7 +15,11 @@ void kernel_main() {
 	init_teei_framework();
 
 	//kmtest();
-	kmtest_optee();
+
+	if( CFG[0] == 0)
+		kmtest_optee();
+	else if( CFG[0] == 1)
+		printf("Unknown CFG[0]!\n");
 
 	while(1){
 	};
