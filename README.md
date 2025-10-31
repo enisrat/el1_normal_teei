@@ -21,7 +21,22 @@ Only DRAM (and SRAM) addresses. Hardware MMIO not included.
 | 0x7f200000   | 0x200000   | soter-shared-mem         | EMU + ORIG (Default?) |
 | 0x47f800000  |            | bl33_entry (EL2 GZ)      |ORIG|
 
+### Physical Locations
+
+- sigma0: 0x70200000
+- keymasterTA: 0x709c9000
+- moe rom/arm-v8-mtk-plat.cfg : 0x70220000
 
 ## Interesting
 
 - `MTK_SIP` `plat_smc_id_table.h` (lk)
+
+
+## Breakpoints
+
+### Koobee_mt6769_R-ota-S_isee400_K6525_P2_20220716
+
+
+
+### xiaomi_c3n_mt6769_SVP_U_upto_V_P2_20241115
+
