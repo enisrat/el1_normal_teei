@@ -12,7 +12,9 @@ void kernel_main() {
 
 	teei_client_init();
 	soter_driver_init();
-	init_teei_framework(7);
+	init_teei_framework();
+
+	teei_change_log_status(7);
 
 	//kmtest();
 
