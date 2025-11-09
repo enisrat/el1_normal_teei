@@ -14,7 +14,15 @@ void kernel_main() {
 	soter_driver_init();
 	init_teei_framework();
 
-	main();
+	//kmtest();
+
+	if( CFG[0] == 0)
+		test_km();
+	else if( CFG[0] == 1)
+		printf("Unknown CFG[0]!\n");
+
+	while(1){
+	};
 }
 
 
