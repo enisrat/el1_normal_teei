@@ -124,3 +124,20 @@ km4     |
 uTbtaLdr| [bta_control.h:487/InvokeCommand]<err>keep alive ta crash,enable to reboot
 uTbtaLdr| 
 ```
+
+## Problems with QEMU
+
+### icount
+
+- when using _icount_ with a DEBUG build
+  - `-icount,shift=auto,align=off,sleep=off'
+  - I got the below error (which I did not get for OPTIMIZED build or without icount...)
+  - QEMU virt clock seems to be too _SLOW_ in this case...
+
+```
+uTInit  | begin to start sst.
+REEagent| [main.cc:54/start_core_service]<err>failed to l4_ipc_wait (err=-2003)
+REEagent| [main.cc:181/main]<err>failed to start core service(1)(err=-2)
+```
+
+
