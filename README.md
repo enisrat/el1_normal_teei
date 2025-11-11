@@ -141,3 +141,17 @@ REEagent| [main.cc:181/main]<err>failed to start core service(1)(err=-2)
 ```
 
 
+## GDB
+
+### campaing 1 - km single input
+
+- Debug an input with QEMU
+
+```
+PYTHONPATH=$PYTHONPATH:$(pwd) gdb-multiarch -x scripts/test_input_km_single.gdb
+```
+
+- When stopping at `km_camp_1_startfuzz`, use `loadi <filepath>` in gdb to load an input
+- In QEMU monitor you can enable `logfile /tmp/trace` `log exec,nochain` to get a trace
+  - or you can use gdb, IDA, etc to debug
+- Then `continue`
