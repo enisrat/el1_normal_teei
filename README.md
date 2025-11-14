@@ -155,3 +155,30 @@ PYTHONPATH=$PYTHONPATH:$(pwd) gdb-multiarch -x scripts/test_input_km_single.gdb
 - In QEMU monitor you can enable `logfile /tmp/trace` `log exec,nochain` to get a trace
   - or you can use gdb, IDA, etc to debug
 - Then `continue`
+
+
+## Command IDs km
+
+| Command ID | Function/Operation                        |
+| ---------- | ----------------------------------------- |
+| 0x00       | GenerateKey                               |
+| 0x04       | beginOperation                            |
+| 0x08       | updateOperation                           |
+| 0x0c       | finishOperation                           |
+| 0x10       | AbortOperation                            |
+| 0x14       | ImportKey                                 |
+| 0x18       | ExportKey                                 |
+| 0x20       | AddRngEntropy                             |
+| 0x3c       | GetKeyCharacteristics                     |
+| 0x40       | AttestKey                                 |
+| 0x44       | UpgradeKey                                |
+| 0x48       | Configure                                 |
+| 0x50       | ComputeSharedHMAC                         |
+| 0x54       | VerifyAuthorization                       |
+| 100 (0x64) | ImportWrappedKey                          |
+| 0x68       | deviceLocked                              |
+|            |                                           |
+| 0x3e9      | km HMAC key                               |
+| 0x3ea      | km ENC_PW                                 |
+| 0x3eb      | km ENC_AUTHTOKEN                          |
+| 0x3ec      | KM_COMMAND_CREATE_KEYPAIR_AND_ATTENTATION |
