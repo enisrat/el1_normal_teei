@@ -17,6 +17,7 @@ class loadi(gdb.Command):
 				buf = f.read(sz)
 				gdb.selected_inferior().write_memory(pe(("KM_CAMP1_FUNC")), func.to_bytes(4,byteorder='little'), 4)
 				gdb.selected_inferior().write_memory(pe(("KM_CAMP1_INPUT")), buf, len(buf))
+				ex("set *KM_CAMP1_SIZE = 0x11800") # FIXED input shmem size
 		else:
 			print("No arguments supplied")
 
