@@ -1435,6 +1435,57 @@ static int vsnprintf_impl(output_gadget_t* output, const char* format, va_list a
 
 ///////////////////////////////////////////////////////////////////////////////
 
+#if 1
+int vprintf_(const char* format, va_list arg)
+{
+
+}
+
+int vsnprintf_(char* s, size_t n, const char* format, va_list arg)
+{
+
+}
+
+int vsprintf_(char* s, const char* format, va_list arg)
+{
+
+}
+
+int vfctprintf(void (*out)(char c, void* extra_arg), void* extra_arg, const char* format, va_list arg)
+{
+
+}
+
+int printf(const char* format, ...)
+{
+
+}
+
+int sprintf_(char* s, const char* format, ...)
+{
+  va_list args;
+  va_start(args, format);
+  const int ret = vsprintf_(s, format, args);
+  va_end(args);
+  return ret;
+}
+
+int snprintf_(char* s, size_t n, const char* format, ...)
+{
+  va_list args;
+  va_start(args, format);
+  const int ret = vsnprintf_(s, n, format, args);
+  va_end(args);
+  return ret;
+}
+
+
+
+void hexdump(const void *memory, int length) {
+
+}
+#else
+
 int vprintf_(const char* format, va_list arg)
 {
   output_gadget_t gadget = extern_putchar_gadget();
@@ -1494,6 +1545,17 @@ int fctprintf(void (*out)(char c, void* extra_arg), void* extra_arg, const char*
   va_end(args);
   return ret;
 }
+
+void hexdump(const void *memory, int length) {
+  unsigned char *bytes = (unsigned char*)memory;
+  for (int i = 0; i < length; i++) {
+      printf("%02x ", bytes[i]);
+      if ((i + 1) % 16 == 0) printf("\n");
+  }
+  printf("\n");
+}
+
+#endif
 
 // Restore the previous diagnostic state
 // Define PRINTF_DISABLE_WARNING_PRAGMAS to disable this block

@@ -119,6 +119,7 @@ ATTR_PRINTF((one_based_format_index), 0)
 PRINTF_VISIBILITY
 void putchar_(char c);
 
+void hexdump(const void *memory, int length);
 
 /**
  * An implementation of the C standard's printf/vprintf
