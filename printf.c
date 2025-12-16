@@ -1435,7 +1435,7 @@ static int vsnprintf_impl(output_gadget_t* output, const char* format, va_list a
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#if 1
+#if 0
 int vprintf_(const char* format, va_list arg)
 {
 
