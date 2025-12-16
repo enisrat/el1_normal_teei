@@ -168,16 +168,42 @@ PYTHONPATH=$PYTHONPATH:$(pwd) gdb-multiarch -x scripts/test_input_km_single.gdb
 | 0x10       | AbortOperation                            |
 | 0x14       | ImportKey                                 |
 | 0x18       | ExportKey                                 |
+| 0x1c       |                                           |
 | 0x20       | AddRngEntropy                             |
+| 0x24       |                                           |
+| 0x28       |                                           |
+| 0x2c       |                                           |
+| 0x30       |                                           |
+| 0x34       |                                           |
+| 0x38       |                                           |
 | 0x3c       | GetKeyCharacteristics                     |
 | 0x40       | AttestKey                                 |
 | 0x44       | UpgradeKey                                |
 | 0x48       | Configure                                 |
+| 0x4c       |                                           |
 | 0x50       | ComputeSharedHMAC                         |
 | 0x54       | VerifyAuthorization                       |
+| 0x58       |                                           |
+| 0x5c       |                                           |
 | 100 (0x64) | ImportWrappedKey                          |
 | 0x68       | deviceLocked                              |
-|            |                                           |
+| 0x6c       |                                           |
+| 0x74       |                                           |
+| 0x78       |                                           |
+| 0x7c       |                                           |
+| 0x28000    |                                           |
+| 0x2c000    |                                           |
+|            | Bootloader Commands:                      |
+| 0x4000     |                                           |
+| 0x8000     |                                           |
+| 0xc000     |                                           |
+| 0x10000    |                                           |
+| 0x14000    |                                           |
+| 0x18000    |                                           |
+| 0x1c000    |                                           |
+| 0x20000    |                                           |
+| 0x24000    |                                           |
+|            | Vendor-Specific Commands:                 |
 | 0x3e9      | km HMAC key                               |
 | 0x3ea      | km ENC_PW                                 |
 | 0x3eb      | km ENC_AUTHTOKEN                          |
