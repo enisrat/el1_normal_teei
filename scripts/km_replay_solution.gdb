@@ -1,5 +1,6 @@
 set auto-load python-scripts on
 set confirm off
+set pagination off
 add-symbol-file el1.elf
 
 source gdb_helpers.py
