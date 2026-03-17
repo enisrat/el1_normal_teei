@@ -33,7 +33,7 @@ class replay_solution(gdb.Command):
     def invoke(self, argument, fromtty):
         argv = gdb.string_to_argv(argument)
         if len(argv) > 0:
-            inputs = parse_meta.load_solution(argv[0])
+            inputs = parse_meta.load_solution(argv[0], argv[1])
             for i, (func, buf) in enumerate(inputs):
                 zero_buf = b'\x00' * 0x11800
                 gdb.selected_inferior().write_memory(pe("KM_CAMP1_INPUT"), zero_buf, 0x11800)

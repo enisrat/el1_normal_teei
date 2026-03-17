@@ -32,7 +32,28 @@ def load_input_hist(path: str):
 		
 	print("Could not parse")
 
-def load_solution(path: str):
+def ser_to_buf(stream, kind):
+	func = None
+	buf = None
+	
+	match kind:
+		case 's':
+			func = varint.decode_stream(stream)
+			sz = varint.decode_stream(stream)
+			buf = stream.read(sz)
+		case 'm':
+			func = varint.decode_stream(stream)
+			num = varint.decode_stream(stream)
+			assert num == 3
+			for i in range(num):
+				sz = varint.decode_stream(stream)
+				buf += stream.read(sz)
+		case _:
+			print("No kind given")		
+	
+	return func, buf
+
+def load_solution(path: str, kind: str):
 	input_hist = bytes(load_input_hist(path))
 
 	s = io.BytesIO(input_hist)
@@ -40,9 +61,7 @@ def load_solution(path: str):
 
 	while True:
 		try:
-			func = varint.decode_stream(s)
-			sz = varint.decode_stream(s)
-			buf = s.read(sz)
+			func, buf = ser_to_buf(s, kind)
 			inputs.append( (func, buf) )
 		except EOFError:
 			break
