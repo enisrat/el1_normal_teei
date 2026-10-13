@@ -1,4 +1,5 @@
 *.o
+*.bin
 .vscode
 *.elf
 *.history*
